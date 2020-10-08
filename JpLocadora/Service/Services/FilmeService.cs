@@ -32,25 +32,22 @@ namespace Service.Services
             return _mapper.Map<FilmeDto>(retorno);
         }
 
-        public string InsereFilme(FilmeDto FilmeDto)
+        public string InsereFilme(FilmeDto filmeDto)
         {
-            var Filme = _mapper.Map<Filme>(FilmeDto);
+            var filme = _mapper.Map<Filme>(filmeDto);
 
-            _repositoryFilme.Add(Filme);
+            _repositoryFilme.Add(filme);
 
             return "Filme Incluido com sucesso";
         }
 
-        public string AlteraFilme(FilmeDto FilmeDto)
+        public string AlteraFilme(FilmeDto filmeDto)
         {
-            var Filme = _repositoryFilme.GetById(FilmeDto.Id.Value);
-            Filme.Diretor = FilmeDto.Diretor;
-            Filme.Ano = FilmeDto.Ano;
-            Filme.GeneroId = FilmeDto.GeneroId;
-            Filme.Titulo = FilmeDto.Titulo;
-            Filme.Sinopse = FilmeDto.Sinopse;
+            //var filme = _repositoryFilme.GetById(filmeDto.Id.Value);
 
-            _repositoryFilme.Update(Filme);
+            var filme = _mapper.Map<Filme>(filmeDto);
+
+            _repositoryFilme.Update(filme);
             return "Filme alterado com sucesso";
         }
 

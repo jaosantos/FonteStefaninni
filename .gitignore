@@ -2,3 +2,6 @@ JpLocadora/Domain/bin/*
 JpLocadora/JpLocadora/bin/*
 JpLocadora/Repository/bin/*
 JpLocadora/Service/bin/*
+JpLocadora/Service/obj/*
+JpLocadora/Service/obj/Debug/netcoreapp2.1/Service.pdb
+JpLocadora/Service/obj/Debug/netcoreapp2.1/Service.pdb

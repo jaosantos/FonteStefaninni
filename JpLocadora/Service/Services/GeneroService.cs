@@ -42,9 +42,7 @@ namespace Service.Services
 
         public string AlteraGenero(GeneroDto generoDto)
         {
-            var genero = _repositoryGenero.GetById(generoDto.Id.Value);
-            genero.Codigo = generoDto.Codigo;
-            genero.Nome = generoDto.Nome;
+            var genero = _mapper.Map<Genero>(generoDto);
 
             _repositoryGenero.Update(genero);
             return "Genero alterado com sucesso";
