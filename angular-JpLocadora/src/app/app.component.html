@@ -1,0 +1,81 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">Gerenciamento de filmes</li>
+  </ol>
+</nav>
+
+<div class="container">
+  <div class="card list-filme">
+    <h5 class="card-header">Lista de filmes</h5>
+    <div class="card-body">
+      <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Titulo</th>
+              <th scope="col">Diretor</th>
+			        <th scope="col">Ano</th>
+              <th scope="col">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let filme of filmes">
+              <td>{{filme.Id}}</td>
+              <td>{{filme.Titulo}}</td>
+              <td>{{filme.Diretor}}</td>
+			        <td>{{filme.Ano}}</td>
+              <td>
+                <button type="button" class="btn btn-warning btn-sm" (click)="editFilme(filme)">Editar</button>
+                <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deleteFilme(filme)">Deletar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+
+  <br>
+  <div class="card add-filme">
+      <h5 class="card-header">Adicionar/Atualizar filme</h5>
+      <div class="card-body">
+          <form id="add-form" (ngSubmit)="f.form.valid && saveFilme(f)" #f="ngForm" novalidate>
+            <div class="form-group">
+                <label for="Titulo">Titulo</label>
+                <input type="text" [(ngModel)]="filme.Titulo" id="Titulo" name="Titulo" #Titulo="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && Titulo.invalid }" placeholder="Digite o Titulo">
+                <div *ngIf="f.submitted && Titulo.invalid" class="invalid-feedback">
+                    <div *ngIf="Titulo.errors.required">Titulo é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Diretor">Diretor</label>
+                <input type="text" [(ngModel)]="filme.Diretor" id="Diretor" name="Diretor" #Diretor="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && Diretor.invalid }" placeholder="Digite o Diretor">
+                <div *ngIf="f.submitted && Diretor.invalid" class="invalid-feedback">
+                    <div *ngIf="Diretor.errors.required">Diretor é obrigatória</div>
+                </div>
+            </div>
+			      <div class="form-group">
+                <label for="Ano">Ano</label>
+                <input type="text"  [(ngModel)]="filme.Ano" id="Ano" name="Ano" #Ano="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && Ano.invalid }" placeholder="Digite o Ano">
+                <div *ngIf="f.submitted && Ano.invalid" class="invalid-feedback">
+                    <div *ngIf="Ano.errors.required">Ano é obrigatória</div>
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="GeneroId">Genero</label>
+              <select [(ngModel)]="filme.GeneroId" value="filme.GeneroId" name="Genero" class="browser-default">
+                <option selected [value]="genero.Id" *ngFor="let genero of generos" >{{genero.Nome}}</option>
+              </select>
+          </div>
+			    <div class="form-group">
+                <label for="Sinopse">Sinopse</label>
+                <input type="textarea" [(ngModel)]="filme.Sinopse" id="Sinopse" name="Sinopse" #Sinopse="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && Sinopse.invalid }" placeholder="Digite o Sinopse">
+                <div *ngIf="f.submitted && Sinopse.invalid" class="invalid-feedback">
+                    <div *ngIf="Sinopse.errors.required">Sinopse é obrigatória</div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-add-filme">Salvar</button>
+            <button type="reset" class="btn btn-secondary btn-add-filme" (click)="cleanForm(f)">Cancelar</button>
+          </form>
+      </div>
+    </div>
+</div>
