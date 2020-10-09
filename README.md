@@ -4,7 +4,8 @@ Alguns avisos...
 
 Antes de executar a API, mude a connection string no appsettings.json do projeto JpLocadora
 
-![](/imagensReadme/ConnectionString.png?raw=true "Optional Title")
+![alt text](https://github.com/jaosantos/FonteStefaninni/blob/main/imagensReadme/ConnectionString.PNG)
+
 
 Para facilitar, foi colocado um swagger na API:
 
