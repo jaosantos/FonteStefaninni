@@ -43,8 +43,6 @@ namespace Service.Services
 
         public string AlteraFilme(FilmeDto filmeDto)
         {
-            //var filme = _repositoryFilme.GetById(filmeDto.Id.Value);
-
             var filme = _mapper.Map<Filme>(filmeDto);
 
             _repositoryFilme.Update(filme);
